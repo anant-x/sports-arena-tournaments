@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -191,6 +192,7 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
   const whatsapp = contact?.whatsappUrl
     ? `${contact.whatsappUrl}?text=${encodeURIComponent(`Hi, I have paid the advance for ${tournament.name}. Registration ID: ${registrationId || "direct"}. Please verify.`)}`
     : "";
+  const hasUpiQr = Boolean(paymentConfig?.upiQrImage);
 
   async function copyUpi() {
     if (!paymentConfig?.upiId) return;
@@ -309,18 +311,34 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
         ) : canRegister ? (
           <div className="mt-6 rounded-lg border border-graphite/10 bg-floodlight p-5">
             <p className="text-sm font-black uppercase text-turf">UPI Payment</p>
-            {paymentConfig?.upiId ? (
+            {hasUpiQr || paymentConfig?.upiId ? (
               <>
-                <p className="mt-2 break-all text-lg font-black text-pitch sm:text-2xl">{paymentConfig.upiId}</p>
+                {hasUpiQr ? (
+                  <div className="mt-4 rounded-lg border border-graphite/10 bg-white p-3 shadow-sm">
+                    <div className="relative mx-auto aspect-[1080/1860] w-full max-w-[280px] overflow-hidden rounded-md bg-black">
+                      <Image
+                        src={paymentConfig.upiQrImage}
+                        alt="PhonePe UPI payment QR code"
+                        fill
+                        sizes="(min-width: 640px) 280px, 78vw"
+                        className="object-contain"
+                      />
+                    </div>
+                    <p className="mt-3 text-center text-xs font-black uppercase text-graphite/45">Scan QR to pay advance</p>
+                  </div>
+                ) : null}
+                {paymentConfig?.upiId ? <p className="mt-4 break-all text-lg font-black text-pitch sm:text-2xl">{paymentConfig.upiId}</p> : null}
                 <p className="mt-2 text-sm font-semibold text-graphite/65">Amount: {formatCurrency(tournament.advanceAmount, tournament.currency)}</p>
-                <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  <a href={upiUrl} className="shine-button tap-target flex items-center justify-center rounded-md bg-pitch px-4 py-3 text-center text-sm font-black text-white">
-                    Open UPI App
-                  </a>
-                  <button onClick={copyUpi} className="tap-target rounded-md border border-graphite/15 bg-white px-4 py-3 text-sm font-black text-pitch">
-                    Copy UPI ID
-                  </button>
-                </div>
+                {paymentConfig?.upiId ? (
+                  <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                    <a href={upiUrl} className="shine-button tap-target flex items-center justify-center rounded-md bg-pitch px-4 py-3 text-center text-sm font-black text-white">
+                      Open UPI App
+                    </a>
+                    <button onClick={copyUpi} className="tap-target rounded-md border border-graphite/15 bg-white px-4 py-3 text-sm font-black text-pitch">
+                      Copy UPI ID
+                    </button>
+                  </div>
+                ) : null}
                 <button onClick={markUpiPaid} disabled={busy} className="shine-button tap-target mt-3 w-full rounded-md bg-crease px-4 py-3 text-sm font-black text-pitch disabled:opacity-60">
                   I Paid via UPI
                 </button>
