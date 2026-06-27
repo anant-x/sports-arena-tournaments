@@ -82,6 +82,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="bg-floodlight px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Social"
+            title="Share results and track players"
+            description="Create WhatsApp-ready match cards, find your own fixtures, and follow the all-time player wall."
+          />
+          <div className="stagger-list mt-6 grid gap-4 md:grid-cols-3">
+            {[
+              ["Share Match Cards", "Completed results now generate square image cards for WhatsApp forwards.", "/results"],
+              ["My Tournament", "Search a player or captain name to see their matches across tournaments.", "/my-tournament"],
+              ["Leaderboard Wall", "Public all-time run scorers and wicket takers from verified scorecards.", "/leaderboard"]
+            ].map(([title, body, href]) => (
+              <Link key={title} href={href} className="motion-card rounded-lg border border-graphite/10 bg-white p-5 shadow-sm transition hover:-translate-y-1">
+                <p className="text-xl font-black text-pitch">{title}</p>
+                <p className="mt-3 text-sm font-semibold leading-6 text-graphite/68">{body}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">

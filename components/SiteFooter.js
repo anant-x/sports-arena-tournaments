@@ -26,6 +26,9 @@ export default function SiteFooter() {
           <div className="mt-3 grid gap-2 text-sm text-white/72">
             <Link href="/tournaments">{tournaments.length} Tournaments</Link>
             <Link href="/register">Register Team</Link>
+            <Link href="/my-tournament">My Tournament</Link>
+            <Link href="/leaderboard">Leaderboard</Link>
+            <Link href="/results">Share Results</Link>
             <Link href="/payment">Advance Payment</Link>
             <Link href="/privacy">Privacy Policy</Link>
             <Link href="/terms">Terms</Link>

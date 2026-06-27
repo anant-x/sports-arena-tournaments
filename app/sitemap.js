@@ -9,6 +9,8 @@ export default function sitemap() {
     "/register",
     "/payment",
     "/live",
+    "/my-tournament",
+    "/leaderboard",
     "/login",
     "/signup",
     "/forgot-password",
@@ -26,8 +28,13 @@ export default function sitemap() {
   ];
   const teamRoutes = data.teams.map((team) => `/teams/${team.shortName.toLowerCase()}`);
   const tournamentRoutes = tournaments.flatMap((tournament) => [`/tournaments/${tournament.slug}`, `/register/${tournament.slug}`]);
+  const shareRoutes = tournaments.flatMap((tournament) =>
+    (tournament.matches || [])
+      .filter((match) => match.status === "completed")
+      .map((match) => `/share/match/${tournament.slug}/${match.id}`)
+  );
 
-  return [...routes, ...teamRoutes, ...tournamentRoutes].map((route) => ({
+  return [...routes, ...teamRoutes, ...tournamentRoutes, ...shareRoutes].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date()
   }));

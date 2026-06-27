@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 function resolveTeam(label, event) {
@@ -37,6 +38,11 @@ function ScoreLine({ match, event }) {
       </div>
       {match.result ? <p className="mt-4 rounded-md bg-floodlight px-4 py-3 text-sm font-black text-scoreboard">{match.result}</p> : null}
       {scorecard.playerOfMatch ? <p className="mt-3 text-sm font-black text-pitch">Player of the Match: {scorecard.playerOfMatch}</p> : null}
+      {match.status === "completed" ? (
+        <Link href={`/share/match/${event.tournamentSlug}/${match.id}`} className="mt-4 inline-flex rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
+          Share Result Card
+        </Link>
+      ) : null}
     </article>
   );
 }

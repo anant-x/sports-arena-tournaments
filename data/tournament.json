@@ -137,6 +137,16 @@
             "team1Score": "96/4 (10 ov)",
             "team2Score": "78/6 (10 ov)",
             "playerOfMatch": "Aarav Mehta",
+            "batting": [
+              { "player": "Aarav Mehta", "team": "TT", "runs": 42, "balls": 21, "fours": 5, "sixes": 2 },
+              { "player": "Vihaan Batra", "team": "TT", "runs": 24, "balls": 16, "fours": 3, "sixes": 1 },
+              { "player": "Rohan Khanna", "team": "LL", "runs": 31, "balls": 24, "fours": 4, "sixes": 0 }
+            ],
+            "bowling": [
+              { "player": "Dev Malhotra", "team": "TT", "overs": 2, "runsConceded": 13, "wickets": 2 },
+              { "player": "Kunal Verma", "team": "LL", "overs": 2, "runsConceded": 17, "wickets": 2 },
+              { "player": "Manav Gill", "team": "TT", "overs": 2, "runsConceded": 18, "wickets": 1 }
+            ],
             "highlights": ["Aarav Mehta 42 off 21", "Dev Malhotra 2/13", "Turf Titans defended 28 in the final 3 overs"]
           }
         },
@@ -153,6 +163,16 @@
             "team1Score": "82/5 (10 ov)",
             "team2Score": "86/4 (9.2 ov)",
             "playerOfMatch": "Shaurya Singh",
+            "batting": [
+              { "player": "Shaurya Singh", "team": "NH", "runs": 37, "balls": 22, "fours": 4, "sixes": 2 },
+              { "player": "Kartik Bansal", "team": "GS", "runs": 29, "balls": 19, "fours": 3, "sixes": 1 },
+              { "player": "Reyansh Vohra", "team": "NH", "runs": 21, "balls": 14, "fours": 2, "sixes": 1 }
+            ],
+            "bowling": [
+              { "player": "Abhay Tyagi", "team": "NH", "overs": 2, "runsConceded": 16, "wickets": 2 },
+              { "player": "Arjun Sethi", "team": "GS", "overs": 2, "runsConceded": 18, "wickets": 2 },
+              { "player": "Ojas Rawat", "team": "NH", "overs": 2, "runsConceded": 15, "wickets": 1 }
+            ],
             "highlights": ["Shaurya Singh 37 not out", "Abhay Tyagi 2/16", "Night Hawks chased with 4 balls left"]
           }
         },

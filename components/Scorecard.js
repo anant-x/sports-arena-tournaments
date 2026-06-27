@@ -1,4 +1,5 @@
 import { teamName } from "../lib/tournament";
+import { matchShareText, shareCardImageUrl, shareMatchUrl } from "../lib/socialFeatures";
 
 function displayName(shortName, tournament) {
   return tournament?.teams?.find((team) => team.shortName === shortName || team.name === shortName)?.name || (tournament ? shortName : teamName(shortName));
@@ -6,6 +7,9 @@ function displayName(shortName, tournament) {
 
 export default function Scorecard({ match, tournament }) {
   const scorecard = match.scorecard || {};
+  const shareUrl = tournament ? shareMatchUrl(tournament.slug, match.id) : "";
+  const imageUrl = tournament ? shareCardImageUrl(tournament.slug, match.id) : "";
+  const whatsappUrl = tournament ? `https://wa.me/?text=${encodeURIComponent(`${matchShareText(match, tournament)}\n${shareUrl}`)}` : "";
 
   return (
     <article className="motion-card rounded-lg border border-graphite/10 bg-white p-5 shadow-sm">
@@ -36,6 +40,19 @@ export default function Scorecard({ match, tournament }) {
           <li key={highlight} className="rounded-md bg-white px-0 font-semibold">· {highlight}</li>
         ))}
       </ul>
+      {tournament ? (
+        <div className="mt-5 grid gap-3 border-t border-graphite/10 pt-4 sm:flex sm:flex-wrap">
+          <a href={whatsappUrl} target="_blank" rel="noreferrer" className="shine-button tap-target flex items-center justify-center rounded-md bg-[#25D366] px-4 py-2 text-sm font-black text-pitch">
+            WhatsApp Card
+          </a>
+          <a href={shareUrl} className="tap-target flex items-center justify-center rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
+            Share Page
+          </a>
+          <a href={imageUrl} target="_blank" rel="noreferrer" className="tap-target flex items-center justify-center rounded-md bg-floodlight px-4 py-2 text-sm font-black text-pitch">
+            Open Image
+          </a>
+        </div>
+      ) : null}
     </article>
   );
 }
