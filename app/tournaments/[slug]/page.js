@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import MatchCard from "../../../components/MatchCard";
 import SectionHeader from "../../../components/SectionHeader";
-import { contactInfo, tournamentEssentials, whatsappUrl } from "../../../lib/siteInfo";
+import { contactInfo, instagramProfileUrl, tournamentEssentials, whatsappUrl } from "../../../lib/siteInfo";
 import { formatCurrency, getTournament, isRegistrationOpen, tournaments } from "../../../lib/tournament";
 
 export function generateStaticParams() {
@@ -32,6 +32,7 @@ export default function TournamentDetailPage({ params }) {
   const contact = contactInfo();
   const whatsapp = whatsappUrl(`Hi, I want to register for ${tournament.name}. Please share slot confirmation and payment details.`);
   const canRegister = isRegistrationOpen(tournament);
+  const tournamentInstagramUrl = instagramProfileUrl(tournament.instagramUrl || tournament.social);
 
   return (
     <main>
@@ -114,6 +115,10 @@ export default function TournamentDetailPage({ params }) {
                     <a href={essentials.venueMapUrl} target="_blank" rel="noreferrer" className="mt-1 inline-flex font-black text-pitch underline decoration-turf/40 underline-offset-4">
                       {value}
                     </a>
+                  ) : label === "Instagram" && tournamentInstagramUrl ? (
+                    <a href={tournamentInstagramUrl} target="_blank" rel="noreferrer" className="mt-1 inline-flex break-words font-black text-pitch underline decoration-turf/40 underline-offset-4">
+                      {value}
+                    </a>
                   ) : (
                   <p className="mt-1 break-words font-black text-pitch">{value}</p>
                   )}
@@ -163,6 +168,9 @@ export default function TournamentDetailPage({ params }) {
             <div className="mt-5 grid gap-3 text-sm font-semibold text-graphite/72">
               <a href={`tel:${contact.phone}`} className="rounded-md bg-floodlight px-4 py-3 text-pitch">{contact.phone}</a>
               <a href={`mailto:${contact.email}`} className="rounded-md bg-floodlight px-4 py-3 text-pitch">{contact.email}</a>
+              {contact.instagramUrl ? (
+                <a href={contact.instagramUrl} target="_blank" rel="noreferrer" className="rounded-md bg-floodlight px-4 py-3 text-pitch">{contact.social}</a>
+              ) : null}
               <span className="rounded-md bg-floodlight px-4 py-3 text-pitch">Support: {essentials.supportWindow}</span>
             </div>
           </div>

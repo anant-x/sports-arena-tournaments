@@ -1,7 +1,7 @@
 import Link from "next/link";
 import SectionHeader from "../../components/SectionHeader";
 import { contactInfo, whatsappUrl } from "../../lib/siteInfo";
-import { organizer, platform, sportsList, tournaments } from "../../lib/tournament";
+import { platform, sportsList, tournaments } from "../../lib/tournament";
 
 export const metadata = {
   title: "Contact & About"
@@ -10,6 +10,14 @@ export const metadata = {
 export default function AboutPage() {
   const contact = contactInfo();
   const whatsapp = whatsappUrl("Hi, I need help with tournament registration or payment.");
+  const contactRows = [
+    ["Platform", platform.name],
+    ["Organizer", contact.name],
+    ["Phone", contact.phone],
+    ["Email", contact.email],
+    ["Address", contact.address],
+    ["Social", contact.social]
+  ];
 
   return (
     <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
@@ -21,17 +29,16 @@ export default function AboutPage() {
             description="Reach the operations team for tournament listing, registration, payments, sponsorship, fixture updates, and venue questions."
           />
           <div className="stagger-list mt-8 grid gap-4">
-            {[
-              ["Platform", platform.name],
-              ["Organizer", contact.name],
-              ["Phone", contact.phone],
-              ["Email", contact.email],
-              ["Address", organizer.address],
-              ["Social", contact.instagramUrl || organizer.social]
-            ].map(([label, value]) => (
+            {contactRows.map(([label, value]) => (
               <div key={label} className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-5">
                 <p className="text-xs font-black uppercase text-turf">{label}</p>
-                <p className="mt-1 break-words text-base font-black text-pitch sm:text-lg">{value}</p>
+                {label === "Social" && contact.instagramUrl ? (
+                  <a href={contact.instagramUrl} target="_blank" rel="noreferrer" className="mt-1 inline-flex break-words text-base font-black text-pitch underline decoration-turf/40 underline-offset-4 sm:text-lg">
+                    {value}
+                  </a>
+                ) : (
+                  <p className="mt-1 break-words text-base font-black text-pitch sm:text-lg">{value}</p>
+                )}
               </div>
             ))}
           </div>

@@ -1,8 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { organizer, platform, tournaments } from "../lib/tournament";
+import { contactInfo } from "../lib/siteInfo";
+import { platform, tournaments } from "../lib/tournament";
 
 export default function SiteFooter() {
+  const contact = contactInfo();
+
   return (
     <footer className="bg-graphite text-white">
       <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 sm:py-10 md:grid-cols-[1.35fr_0.65fr_0.7fr] lg:px-8">
@@ -32,9 +35,15 @@ export default function SiteFooter() {
         <div>
           <p className="text-sm font-bold uppercase tracking-wide text-crease">Organizer</p>
           <div className="mt-3 grid gap-2 text-sm text-white/72">
-            <span>{organizer.phone}</span>
-            <span>{organizer.email}</span>
-            <span>{organizer.social}</span>
+            <a href={`tel:${contact.phone}`} className="transition hover:text-crease">{contact.phone}</a>
+            <a href={`mailto:${contact.email}`} className="transition hover:text-crease">{contact.email}</a>
+            {contact.instagramUrl ? (
+              <a href={contact.instagramUrl} target="_blank" rel="noreferrer" className="transition hover:text-crease">
+                {contact.social}
+              </a>
+            ) : (
+              <span>{contact.social}</span>
+            )}
           </div>
         </div>
       </div>
