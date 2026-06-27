@@ -28,7 +28,7 @@ export default function TournamentRegistrationPage({ params }) {
   const canRegister = isRegistrationOpen(tournament);
 
   return (
-    <main className="px-4 py-12 sm:px-6 lg:px-8">
+    <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link href={`/tournaments/${tournament.slug}`} className="text-sm font-black text-turf">Back to tournament</Link>
         <div className="mt-6">
@@ -46,16 +46,16 @@ export default function TournamentRegistrationPage({ params }) {
           {canRegister ? (
             <RegistrationForm tournament={tournament} />
           ) : (
-            <div className="motion-card rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+            <div className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
               <p className="text-xl font-black text-pitch">Registration Closed</p>
               <p className="mt-2 text-sm font-semibold leading-6 text-graphite/68">
                 New team/player entries are closed for this tournament.
               </p>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <Link href={`/tournaments/${tournament.slug}`} className="shine-button rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">
+              <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
+                <Link href={`/tournaments/${tournament.slug}`} className="shine-button tap-target flex items-center justify-center rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">
                   View Tournament
                 </Link>
-                <Link href="/register" className="shine-button rounded-md border border-graphite/15 px-5 py-3 text-sm font-black text-pitch">
+                <Link href="/register" className="shine-button tap-target flex items-center justify-center rounded-md border border-graphite/15 px-5 py-3 text-sm font-black text-pitch">
                   Browse Open Events
                 </Link>
               </div>

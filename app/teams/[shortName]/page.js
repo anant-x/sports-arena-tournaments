@@ -29,7 +29,7 @@ export default function TeamDetailPage({ params }) {
   const teamMatches = matchesForTeam(team.shortName);
 
   return (
-    <main className="px-4 py-12 sm:px-6 lg:px-8">
+    <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <Link href="/teams" className="text-sm font-black text-turf">Back to Teams</Link>
         <section className="mt-6 grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">

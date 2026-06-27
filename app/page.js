@@ -25,20 +25,20 @@ export default function HomePage() {
           className="hero-media object-cover opacity-42"
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,33,23,0.97),rgba(13,33,23,0.76),rgba(13,33,23,0.28))]" />
-        <div className="relative mx-auto grid min-h-[70vh] max-w-7xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
+        <div className="relative mx-auto grid min-h-[calc(100svh-7rem)] max-w-7xl gap-8 px-4 py-10 sm:min-h-[70vh] sm:px-6 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:px-8">
           <div className="hero-copy">
             <p className="text-sm font-black uppercase tracking-wide text-crease">{platform.tagline}</p>
-            <h1 className="mt-4 text-5xl font-black leading-tight tracking-normal sm:text-6xl lg:text-7xl">{platform.name}</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/84">{platform.description}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link href="/tournaments" className="shine-button rounded-md bg-crease px-5 py-3 text-sm font-black text-pitch shadow-lift transition hover:bg-white">
+            <h1 className="mt-4 text-4xl font-black leading-tight tracking-normal sm:text-6xl lg:text-7xl">{platform.name}</h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/84 sm:text-lg sm:leading-8">{platform.description}</p>
+            <div className="mt-8 grid gap-3 sm:flex sm:flex-wrap">
+              <Link href="/tournaments" className="shine-button tap-target flex items-center justify-center rounded-md bg-crease px-5 py-3 text-sm font-black text-pitch shadow-lift transition hover:bg-white">
                 Browse Tournaments
               </Link>
-              <Link href="/signup" className="shine-button rounded-md border border-white/35 px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-pitch">
+              <Link href="/signup" className="shine-button tap-target flex items-center justify-center rounded-md border border-white/35 px-5 py-3 text-sm font-black text-white transition hover:bg-white hover:text-pitch">
                 Create Account
               </Link>
               {whatsapp ? (
-                <a href={whatsapp} target="_blank" rel="noreferrer" className="shine-button rounded-md bg-[#25D366] px-5 py-3 text-sm font-black text-pitch shadow-lift transition hover:bg-white">
+                <a href={whatsapp} target="_blank" rel="noreferrer" className="shine-button tap-target flex items-center justify-center rounded-md bg-[#25D366] px-5 py-3 text-sm font-black text-pitch shadow-lift transition hover:bg-white">
                   WhatsApp Register
                 </a>
               ) : null}
@@ -52,17 +52,17 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="float-soft rounded-lg border border-white/12 bg-white/9 p-5 backdrop-blur">
+          <div className="float-soft rounded-lg border border-white/12 bg-white/9 p-4 backdrop-blur sm:p-5">
             <p className="text-sm font-black uppercase text-crease">Open Registrations</p>
             <div className="stagger-list mt-5 grid gap-3">
               {openTournaments().slice(0, 4).map((tournament) => (
                 <Link key={tournament.slug} href={`/tournaments/${tournament.slug}`} className="motion-card rounded-md bg-white/10 p-4 transition hover:bg-white/16">
-                  <div className="flex items-center justify-between gap-3">
-                    <div>
+                  <div className="flex items-start justify-between gap-3">
+                    <div className="min-w-0">
                       <p className="font-black text-white">{tournament.name}</p>
                       <p className="mt-1 text-sm text-white/64">{tournament.sport} · {tournament.dates}</p>
                     </div>
-                    <span className="rounded-md bg-crease px-3 py-1 text-xs font-black text-pitch">{tournament.slots - tournament.registered} left</span>
+                    <span className="shrink-0 rounded-md bg-crease px-3 py-1 text-xs font-black text-pitch">{tournament.slots - tournament.registered} left</span>
                   </div>
                 </Link>
               ))}
@@ -82,7 +82,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <section className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <SectionHeader
@@ -90,7 +90,7 @@ export default function HomePage() {
               title="Tournaments accepting registrations"
               description="Choose a tournament, save your player details, register, and pay the advance amount online."
             />
-            <Link href="/tournaments" className="shine-button inline-flex rounded-md bg-pitch px-4 py-2 text-sm font-black text-white transition hover:bg-scoreboard">
+            <Link href="/tournaments" className="shine-button tap-target inline-flex items-center justify-center rounded-md bg-pitch px-4 py-2 text-sm font-black text-white transition hover:bg-scoreboard sm:w-auto">
               View All
             </Link>
           </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-floodlight px-4 py-12 sm:px-6 lg:px-8">
+      <section className="bg-floodlight px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeader
@@ -129,7 +129,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <section className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
           <div>
             <SectionHeader

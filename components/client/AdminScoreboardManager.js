@@ -168,7 +168,7 @@ export default function AdminScoreboardManager({ password }) {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <form onSubmit={saveMatch} className="motion-card rounded-lg border border-graphite/10 bg-white p-5 shadow-sm">
+      <form onSubmit={saveMatch} className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-5">
         <p className="text-sm font-black uppercase text-turf">Match Scorecard</p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2 text-sm font-bold text-pitch">
@@ -216,10 +216,10 @@ export default function AdminScoreboardManager({ password }) {
           Highlights
           <textarea name="highlights" value={matchForm.highlights} onChange={updateMatchField} rows={4} placeholder="One highlight per line" className="rounded-md border border-graphite/15 px-4 py-3" />
         </label>
-        <button className="shine-button mt-5 rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">Save Match</button>
+        <button className="shine-button tap-target mt-5 w-full rounded-md bg-pitch px-5 py-3 text-sm font-black text-white sm:w-auto">Save Match</button>
       </form>
 
-      <form onSubmit={saveStanding} className="motion-card rounded-lg border border-graphite/10 bg-white p-5 shadow-sm">
+      <form onSubmit={saveStanding} className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-5">
         <p className="text-sm font-black uppercase text-turf">Points Table</p>
         <div className="mt-4 grid gap-4 sm:grid-cols-2">
           <label className="grid gap-2 text-sm font-bold text-pitch">
@@ -237,7 +237,7 @@ export default function AdminScoreboardManager({ password }) {
             </label>
           ))}
         </div>
-        <button className="shine-button mt-5 rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">Save Standing</button>
+        <button className="shine-button tap-target mt-5 w-full rounded-md bg-pitch px-5 py-3 text-sm font-black text-white sm:w-auto">Save Standing</button>
       </form>
 
       {message ? <p className="rounded-md bg-floodlight px-4 py-3 text-sm font-black text-pitch lg:col-span-2">{message}</p> : null}

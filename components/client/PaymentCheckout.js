@@ -244,11 +244,11 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
   }
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr]">
-      <aside className="motion-card rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+    <div className="grid gap-5 lg:grid-cols-[0.78fr_1.22fr] lg:gap-8">
+      <aside className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6 lg:sticky lg:top-28 lg:self-start">
         <p className="text-sm font-black uppercase text-turf">{tournament.sport}</p>
-        <h2 className="mt-2 text-3xl font-black text-pitch">{tournament.name}</h2>
-        <dl className="mt-6 grid gap-4 text-sm">
+        <h2 className="mt-2 text-2xl font-black leading-tight text-pitch sm:text-3xl">{tournament.name}</h2>
+        <dl className="mt-5 grid gap-3 text-sm sm:mt-6 sm:gap-4">
           <div className="rounded-md bg-floodlight px-4 py-3">
             <dt className="font-black uppercase text-graphite/45">Advance Due</dt>
             <dd className="mt-1 text-2xl font-black text-pitch">{formatCurrency(tournament.advanceAmount, tournament.currency)}</dd>
@@ -264,9 +264,9 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
         </dl>
       </aside>
 
-      <section className="motion-card rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+      <section className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
         <p className="text-sm font-black uppercase text-turf">Secure Checkout</p>
-        <h1 className="mt-2 text-4xl font-black text-pitch">Pay advance amount</h1>
+        <h1 className="mt-2 text-3xl font-black leading-tight text-pitch sm:text-4xl">Pay advance amount</h1>
         <p className="mt-4 text-sm leading-6 text-graphite/68">
           Choose Razorpay for card/netbanking/UPI through Checkout, or pay directly with UPI and submit it for organizer verification.
         </p>
@@ -280,7 +280,7 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
             <button
               key={id}
               onClick={() => setMethod(id)}
-                className={`rounded-md px-4 py-3 text-sm font-black transition ${method === id ? "bg-pitch text-white" : "text-pitch"}`}
+                className={`tap-target rounded-md px-4 py-3 text-sm font-black transition ${method === id ? "bg-pitch text-white" : "text-pitch"}`}
             >
               {label}
             </button>
@@ -302,7 +302,7 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
           <button
             onClick={startPayment}
             disabled={busy}
-            className="shine-button mt-6 w-full rounded-md bg-pitch px-5 py-3 text-sm font-black text-white transition hover:bg-scoreboard disabled:cursor-not-allowed disabled:opacity-60"
+            className="shine-button tap-target mt-6 w-full rounded-md bg-pitch px-5 py-3 text-sm font-black text-white transition hover:bg-scoreboard disabled:cursor-not-allowed disabled:opacity-60"
           >
             {busy ? "Opening Payment..." : `Pay ${formatCurrency(tournament.advanceAmount, tournament.currency)} with Razorpay`}
           </button>
@@ -311,17 +311,17 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
             <p className="text-sm font-black uppercase text-turf">UPI Payment</p>
             {paymentConfig?.upiId ? (
               <>
-                <p className="mt-2 text-2xl font-black text-pitch">{paymentConfig.upiId}</p>
+                <p className="mt-2 break-all text-lg font-black text-pitch sm:text-2xl">{paymentConfig.upiId}</p>
                 <p className="mt-2 text-sm font-semibold text-graphite/65">Amount: {formatCurrency(tournament.advanceAmount, tournament.currency)}</p>
                 <div className="mt-4 grid gap-2 sm:grid-cols-2">
-                  <a href={upiUrl} className="shine-button rounded-md bg-pitch px-4 py-3 text-center text-sm font-black text-white">
+                  <a href={upiUrl} className="shine-button tap-target flex items-center justify-center rounded-md bg-pitch px-4 py-3 text-center text-sm font-black text-white">
                     Open UPI App
                   </a>
-                  <button onClick={copyUpi} className="rounded-md border border-graphite/15 bg-white px-4 py-3 text-sm font-black text-pitch">
+                  <button onClick={copyUpi} className="tap-target rounded-md border border-graphite/15 bg-white px-4 py-3 text-sm font-black text-pitch">
                     Copy UPI ID
                   </button>
                 </div>
-                <button onClick={markUpiPaid} disabled={busy} className="shine-button mt-3 w-full rounded-md bg-crease px-4 py-3 text-sm font-black text-pitch disabled:opacity-60">
+                <button onClick={markUpiPaid} disabled={busy} className="shine-button tap-target mt-3 w-full rounded-md bg-crease px-4 py-3 text-sm font-black text-pitch disabled:opacity-60">
                   I Paid via UPI
                 </button>
               </>
@@ -331,7 +331,7 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
                   UPI ID is not configured yet. Add `NEXT_PUBLIC_PAYMENT_UPI_ID` in Vercel to enable direct UPI payments.
                 </p>
                 {whatsapp ? (
-                  <a href={whatsapp} target="_blank" rel="noreferrer" className="rounded-md bg-[#25D366] px-4 py-3 text-center text-sm font-black text-pitch">
+                  <a href={whatsapp} target="_blank" rel="noreferrer" className="tap-target flex items-center justify-center rounded-md bg-[#25D366] px-4 py-3 text-center text-sm font-black text-pitch">
                     Ask Organizer on WhatsApp
                   </a>
                 ) : null}
@@ -342,11 +342,11 @@ export default function PaymentCheckout({ tournaments, paymentConfig, contact })
 
         {status ? <p className="mt-4 rounded-md bg-floodlight px-4 py-3 text-sm font-black text-pitch">{status}</p> : null}
 
-        <div className="mt-6 flex flex-wrap gap-2">
-          <Link href={`/register/${tournament.slug}`} className="rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
+        <div className="mt-6 grid gap-2 sm:flex sm:flex-wrap">
+          <Link href={`/register/${tournament.slug}`} className="tap-target flex items-center justify-center rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
             Edit Registration
           </Link>
-          <Link href="/profile" className="rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
+          <Link href="/profile" className="tap-target flex items-center justify-center rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
             View Profile
           </Link>
         </div>

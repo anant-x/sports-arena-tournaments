@@ -9,7 +9,7 @@ export default function PrivacyPage() {
   const contact = contactInfo();
 
   return (
-    <main className="px-4 py-12 sm:px-6 lg:px-8">
+    <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <SectionHeader eyebrow="Legal" title="Privacy Policy" description="How tournament registration and payment information is collected and used." />
         <div className="mt-8 grid gap-5 text-sm font-semibold leading-7 text-graphite/72">

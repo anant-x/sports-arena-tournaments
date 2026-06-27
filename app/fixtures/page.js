@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function FixturesPage() {
   return (
-    <main className="px-4 py-12 sm:px-6 lg:px-8">
+    <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <SectionHeader
           eyebrow="Schedule"

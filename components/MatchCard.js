@@ -29,12 +29,12 @@ export default function MatchCard({ match, tournament }) {
 
   return (
     <article className="motion-card surface rounded-lg p-4 shadow-sm">
-      <div className="flex items-center justify-between gap-3 border-b border-graphite/10 pb-3">
-        <div>
+      <div className="flex items-start justify-between gap-3 border-b border-graphite/10 pb-3">
+        <div className="min-w-0">
           <p className="text-xs font-black uppercase text-turf">{match.date}</p>
-          <p className="text-sm font-semibold text-graphite/65">{match.time} · {match.venue}</p>
+          <p className="mt-0.5 text-sm font-semibold leading-5 text-graphite/65">{match.time} · {match.venue}</p>
         </div>
-        <span className={`rounded-md px-2.5 py-1 text-xs font-black uppercase ${isCompleted ? "bg-scoreboard text-white" : "bg-crease text-pitch pulse-live"}`}>
+        <span className={`shrink-0 rounded-md px-2.5 py-1 text-xs font-black uppercase ${isCompleted ? "bg-scoreboard text-white" : "bg-crease text-pitch pulse-live"}`}>
           {isCompleted ? "Result" : "Upcoming"}
         </span>
       </div>

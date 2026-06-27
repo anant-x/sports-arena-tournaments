@@ -9,7 +9,7 @@ export default function TermsPage() {
   const contact = contactInfo();
 
   return (
-    <main className="px-4 py-12 sm:px-6 lg:px-8">
+    <main className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
       <div className="mx-auto max-w-4xl">
         <SectionHeader eyebrow="Legal" title="Terms and Conditions" description="Rules for using the platform and joining hosted tournaments." />
         <div className="mt-8 grid gap-5 text-sm font-semibold leading-7 text-graphite/72">

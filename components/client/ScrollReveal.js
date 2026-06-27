@@ -18,6 +18,14 @@ function revealDelay(index) {
   return `${Math.min(index % 8, 7) * 55}ms`;
 }
 
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+
+  return rect.top < viewportHeight * 0.94 && rect.bottom > 0 && rect.left < viewportWidth && rect.right > 0;
+}
+
 export default function ScrollReveal() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -27,12 +35,32 @@ export default function ScrollReveal() {
       return undefined;
     }
 
+    const pending = new Set();
+
+    function showElement(element) {
+      element.classList.add("is-visible");
+      pending.delete(element);
+      observer.unobserve(element);
+    }
+
+    function checkPending() {
+      const elements = new Set([
+        ...pending,
+        ...Array.from(document.querySelectorAll(".reveal-on-scroll:not(.is-visible)"))
+      ]);
+
+      elements.forEach((element) => {
+        if (isInViewport(element)) {
+          showElement(element);
+        }
+      });
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-            observer.unobserve(entry.target);
+            showElement(entry.target);
           }
         });
       },
@@ -56,6 +84,13 @@ export default function ScrollReveal() {
         element.dataset.revealRegistered = "true";
         element.style.setProperty("--reveal-delay", revealDelay(index));
         element.classList.add("reveal-on-scroll");
+
+        if (isInViewport(element)) {
+          showElement(element);
+          return;
+        }
+
+        pending.add(element);
         observer.observe(element);
       });
     }
@@ -78,9 +113,16 @@ export default function ScrollReveal() {
       subtree: true
     });
 
+    window.addEventListener("scroll", checkPending, { passive: true });
+    window.addEventListener("resize", checkPending);
+    window.requestAnimationFrame(checkPending);
+
     return () => {
       observer.disconnect();
       mutationObserver.disconnect();
+      pending.clear();
+      window.removeEventListener("scroll", checkPending);
+      window.removeEventListener("resize", checkPending);
       document.documentElement.classList.remove("reveal-ready");
     };
   }, []);

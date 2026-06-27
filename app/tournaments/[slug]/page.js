@@ -38,15 +38,15 @@ export default function TournamentDetailPage({ params }) {
       <section className="relative isolate overflow-hidden bg-pitch text-white">
         <Image src={tournament.bannerImage} alt={`${tournament.name} banner`} fill priority sizes="100vw" className="hero-media object-cover opacity-45" />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(13,33,23,0.96),rgba(13,33,23,0.72),rgba(13,33,23,0.32))]" />
-        <div className="relative mx-auto grid min-h-[58vh] max-w-7xl gap-8 px-4 py-14 sm:px-6 lg:grid-cols-[1fr_0.7fr] lg:items-end lg:px-8">
+        <div className="relative mx-auto grid min-h-[calc(100svh-8rem)] max-w-7xl gap-8 px-4 py-10 sm:min-h-[58vh] sm:px-6 sm:py-14 lg:grid-cols-[1fr_0.7fr] lg:items-end lg:px-8">
           <div className="hero-copy">
             <Link href="/tournaments" className="text-sm font-black text-crease">Back to tournaments</Link>
             <p className="mt-6 text-sm font-black uppercase tracking-wide text-crease">{tournament.sport} · {tournament.format}</p>
-            <h1 className="mt-3 text-5xl font-black leading-tight tracking-normal sm:text-6xl">{tournament.name}</h1>
-            <p className="mt-5 max-w-2xl text-lg leading-8 text-white/82">{tournament.description}</p>
+            <h1 className="mt-3 text-4xl font-black leading-tight tracking-normal sm:text-6xl">{tournament.name}</h1>
+            <p className="mt-5 max-w-2xl text-base leading-7 text-white/82 sm:text-lg sm:leading-8">{tournament.description}</p>
           </div>
-          <div className="float-soft rounded-lg border border-white/12 bg-white/10 p-5 backdrop-blur">
-            <dl className="grid grid-cols-2 gap-4 text-sm">
+          <div className="float-soft rounded-lg border border-white/12 bg-white/10 p-4 backdrop-blur sm:p-5">
+            <dl className="grid grid-cols-2 gap-3 text-sm sm:gap-4">
               <div>
                 <dt className="font-bold uppercase text-white/55">Date</dt>
                 <dd className="mt-1 font-black text-white">{tournament.dates}</dd>
@@ -65,11 +65,11 @@ export default function TournamentDetailPage({ params }) {
               </div>
             </dl>
             {canRegister ? (
-              <div className="mt-5 grid grid-cols-2 gap-3">
-                <Link href={`/register/${tournament.slug}`} className="shine-button rounded-md bg-crease px-4 py-3 text-center text-sm font-black text-pitch transition hover:bg-white">
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                <Link href={`/register/${tournament.slug}`} className="shine-button tap-target flex items-center justify-center rounded-md bg-crease px-4 py-3 text-center text-sm font-black text-pitch transition hover:bg-white">
                   Register
                 </Link>
-                <Link href={`/payment?slug=${tournament.slug}`} className="shine-button rounded-md border border-white/22 px-4 py-3 text-center text-sm font-black text-white transition hover:bg-white hover:text-pitch">
+                <Link href={`/payment?slug=${tournament.slug}`} className="shine-button tap-target flex items-center justify-center rounded-md border border-white/22 px-4 py-3 text-center text-sm font-black text-white transition hover:bg-white hover:text-pitch">
                   Pay Advance
                 </Link>
               </div>
@@ -79,7 +79,7 @@ export default function TournamentDetailPage({ params }) {
               </p>
             )}
             {canRegister && whatsapp ? (
-              <a href={whatsapp} target="_blank" rel="noreferrer" className="shine-button mt-3 flex rounded-md bg-[#25D366] px-4 py-3 text-center text-sm font-black text-pitch transition hover:bg-white">
+              <a href={whatsapp} target="_blank" rel="noreferrer" className="shine-button tap-target mt-3 flex items-center justify-center rounded-md bg-[#25D366] px-4 py-3 text-center text-sm font-black text-pitch transition hover:bg-white">
                 WhatsApp Registration
               </a>
             ) : null}
@@ -87,7 +87,7 @@ export default function TournamentDetailPage({ params }) {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <section className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.85fr_1.15fr]">
           <div>
             <SectionHeader eyebrow="Details" title="Registration information" />
@@ -115,7 +115,7 @@ export default function TournamentDetailPage({ params }) {
                       {value}
                     </a>
                   ) : (
-                    <p className="mt-1 font-black text-pitch">{value}</p>
+                  <p className="mt-1 break-words font-black text-pitch">{value}</p>
                   )}
                 </div>
               ))}
@@ -144,7 +144,7 @@ export default function TournamentDetailPage({ params }) {
         </div>
       </section>
 
-      <section className="bg-floodlight px-4 py-12 sm:px-6 lg:px-8">
+      <section className="bg-floodlight px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <SectionHeader eyebrow="Schedule" title={`${tournament.sport} fixtures and bracket`} />
           <div className="stagger-list mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -155,7 +155,7 @@ export default function TournamentDetailPage({ params }) {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
+      <section className="px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
         <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[1fr_0.9fr]">
           <div className="rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
             <p className="text-sm font-black uppercase text-turf">Organizer Contact</p>
@@ -174,7 +174,7 @@ export default function TournamentDetailPage({ params }) {
               <p>Final fixture order can change after slot confirmation, weather, or venue instructions.</p>
             </div>
             {canRegister ? (
-              <Link href={`/register/${tournament.slug}`} className="shine-button mt-6 inline-flex rounded-md bg-crease px-5 py-3 text-sm font-black text-pitch">
+              <Link href={`/register/${tournament.slug}`} className="shine-button tap-target mt-6 inline-flex w-full items-center justify-center rounded-md bg-crease px-5 py-3 text-sm font-black text-pitch sm:w-auto">
                 Complete Registration Form
               </Link>
             ) : (

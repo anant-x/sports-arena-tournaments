@@ -24,11 +24,11 @@ export default function TournamentCard({ tournament, compact = false }) {
             {tournament.status}
           </div>
         </div>
-        <div className="p-5">
+        <div className="p-4 sm:p-5">
           <p className="text-xs font-black uppercase text-turf">{tournament.format} · {tournament.city}</p>
-          <h2 className="mt-2 text-xl font-black leading-tight text-pitch">{tournament.name}</h2>
+          <h2 className="mt-2 text-lg font-black leading-tight text-pitch sm:text-xl">{tournament.name}</h2>
           <p className="mt-3 line-clamp-2 text-sm leading-6 text-graphite/70">{tournament.description}</p>
-          <dl className="mt-5 grid grid-cols-3 gap-3 border-t border-graphite/10 pt-4 text-sm">
+          <dl className="mt-5 grid gap-3 border-t border-graphite/10 pt-4 text-sm min-[390px]:grid-cols-3">
             <div>
               <dt className="font-bold uppercase text-graphite/45">Date</dt>
               <dd className="mt-1 font-black text-pitch">{tournament.dates}</dd>
@@ -44,18 +44,18 @@ export default function TournamentCard({ tournament, compact = false }) {
           </dl>
         </div>
       </Link>
-      <div className="flex gap-2 border-t border-graphite/10 p-4">
+      <div className="flex flex-col gap-2 border-t border-graphite/10 p-4 min-[420px]:flex-row">
         {canRegister ? (
           <>
-            <Link href={`/register/${tournament.slug}`} className="shine-button flex-1 rounded-md bg-pitch px-4 py-2 text-center text-sm font-black text-white transition hover:bg-scoreboard">
+            <Link href={`/register/${tournament.slug}`} className="shine-button tap-target flex flex-1 items-center justify-center rounded-md bg-pitch px-4 py-2 text-center text-sm font-black text-white transition hover:bg-scoreboard">
               Register
             </Link>
-            <Link href={`/payment?slug=${tournament.slug}`} className="shine-button rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch transition hover:bg-floodlight">
+            <Link href={`/payment?slug=${tournament.slug}`} className="shine-button tap-target flex items-center justify-center rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch transition hover:bg-floodlight">
               Pay
             </Link>
           </>
         ) : (
-          <Link href={`/tournaments/${tournament.slug}`} className="shine-button flex-1 rounded-md bg-graphite px-4 py-2 text-center text-sm font-black text-white transition hover:bg-scoreboard">
+          <Link href={`/tournaments/${tournament.slug}`} className="shine-button tap-target flex flex-1 items-center justify-center rounded-md bg-graphite px-4 py-2 text-center text-sm font-black text-white transition hover:bg-scoreboard">
             Registration Closed
           </Link>
         )}

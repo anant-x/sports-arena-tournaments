@@ -90,7 +90,7 @@ export default function AuthForm({ mode = "login" }) {
   }
 
   return (
-    <div className="motion-card mx-auto max-w-2xl rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+    <div className="motion-card mx-auto max-w-2xl rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
       <form onSubmit={submit} className="grid gap-4">
         {mode === "signup" ? (
           <label className="grid gap-2 text-sm font-bold text-pitch">
@@ -128,7 +128,7 @@ export default function AuthForm({ mode = "login" }) {
             </select>
           </label>
         ) : null}
-        <button disabled={busy} className="shine-button rounded-md bg-pitch px-5 py-3 text-sm font-black text-white transition hover:bg-scoreboard disabled:cursor-not-allowed disabled:opacity-60">
+        <button disabled={busy} className="shine-button tap-target rounded-md bg-pitch px-5 py-3 text-sm font-black text-white transition hover:bg-scoreboard disabled:cursor-not-allowed disabled:opacity-60">
           {busy ? "Saving..." : mode === "signup" ? "Create Account" : "Login"}
         </button>
       </form>

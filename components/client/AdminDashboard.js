@@ -157,7 +157,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="grid gap-8">
-      <section className="motion-card rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+      <section className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
         <div className="mb-5">
           <p className="text-sm font-black uppercase text-turf">Organizer Access Only</p>
           <h2 className="mt-1 text-2xl font-black text-pitch">Secure admin login</h2>
@@ -181,7 +181,7 @@ export default function AdminDashboard() {
               className="rounded-md border border-graphite/15 px-4 py-3 font-semibold outline-none focus:border-turf"
             />
           </label>
-          <button disabled={busy} className="shine-button self-end rounded-md bg-pitch px-5 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-60">
+          <button disabled={busy} className="shine-button tap-target self-end rounded-md bg-pitch px-5 py-3 text-sm font-black text-white disabled:cursor-not-allowed disabled:opacity-60">
             {busy ? "Loading..." : "Open Dashboard"}
           </button>
         </form>
@@ -205,18 +205,18 @@ export default function AdminDashboard() {
             ))}
           </section>
 
-          <section className="motion-card rounded-lg border border-graphite/10 bg-white p-6 shadow-sm">
+          <section className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
               <div>
                 <p className="text-xs font-black uppercase text-turf">Database</p>
-                <h2 className="mt-1 text-2xl font-black text-pitch">{summary.database.host}</h2>
+                <h2 className="mt-1 break-words text-xl font-black text-pitch sm:text-2xl">{summary.database.host}</h2>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="mobile-scroll -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 sm:flex-wrap sm:overflow-visible sm:pb-0">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`rounded-md px-4 py-2 text-sm font-black transition ${
+                    className={`tap-target shrink-0 rounded-md px-4 py-2 text-sm font-black transition ${
                       activeTab === tab.id ? "bg-pitch text-white" : "border border-graphite/15 text-pitch"
                     }`}
                   >
@@ -245,8 +245,8 @@ export default function AdminDashboard() {
                   </button>
                 </div>
 
-                <div className="mt-4 overflow-x-auto">
-                  <table className="min-w-full border-separate border-spacing-0 text-left text-sm">
+                <div className="table-scroll mobile-scroll mt-4">
+                  <table className="min-w-[760px] border-separate border-spacing-0 text-left text-sm">
                     <thead>
                       <tr>
                         {activeColumns.map(([key, label]) => (

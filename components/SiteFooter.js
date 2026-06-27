@@ -5,14 +5,14 @@ import { organizer, platform, tournaments } from "../lib/tournament";
 export default function SiteFooter() {
   return (
     <footer className="bg-graphite text-white">
-      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.35fr_0.65fr_0.7fr] lg:px-8">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 sm:py-10 md:grid-cols-[1.35fr_0.65fr_0.7fr] lg:px-8">
         <div>
-          <div className="flex items-center gap-4">
-            <span className="logo-breathe relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-black/25 ring-1 ring-white/10">
-              <Image src={platform.logo || "/assets/sports-arena-logo-v2.png"} alt={`${platform.name} logo`} fill sizes="96px" className="object-cover" />
+          <div className="flex items-center gap-3 sm:gap-4">
+            <span className="logo-breathe relative h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-black/25 ring-1 ring-white/10 sm:h-24 sm:w-24">
+              <Image src={platform.logo || "/assets/sports-arena-logo-v2.png"} alt={`${platform.name} logo`} fill sizes="(min-width: 640px) 96px, 64px" className="object-cover" />
             </span>
-            <div>
-              <p className="text-xl font-black uppercase tracking-wide">{platform.name}</p>
+            <div className="min-w-0">
+              <p className="truncate text-lg font-black uppercase tracking-wide sm:text-xl">{platform.name}</p>
               <p className="mt-1 text-sm font-black uppercase tracking-wide text-crease">Play · Compete · Win</p>
             </div>
           </div>
