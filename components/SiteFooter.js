@@ -1,0 +1,43 @@
+import Image from "next/image";
+import Link from "next/link";
+import { organizer, platform, tournaments } from "../lib/tournament";
+
+export default function SiteFooter() {
+  return (
+    <footer className="bg-graphite text-white">
+      <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.35fr_0.65fr_0.7fr] lg:px-8">
+        <div>
+          <div className="flex items-center gap-4">
+            <span className="logo-breathe relative h-24 w-24 shrink-0 overflow-hidden rounded-lg bg-black/25 ring-1 ring-white/10">
+              <Image src={platform.logo || "/assets/sports-arena-logo-v2.png"} alt={`${platform.name} logo`} fill sizes="96px" className="object-cover" />
+            </span>
+            <div>
+              <p className="text-xl font-black uppercase tracking-wide">{platform.name}</p>
+              <p className="mt-1 text-sm font-black uppercase tracking-wide text-crease">Play · Compete · Win</p>
+            </div>
+          </div>
+          <p className="mt-3 max-w-2xl text-sm leading-6 text-white/70">{platform.description}</p>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wide text-crease">Explore</p>
+          <div className="mt-3 grid gap-2 text-sm text-white/72">
+            <Link href="/tournaments">{tournaments.length} Tournaments</Link>
+            <Link href="/register">Register Team</Link>
+            <Link href="/payment">Advance Payment</Link>
+            <Link href="/privacy">Privacy Policy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/refund-policy">Refund Policy</Link>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm font-bold uppercase tracking-wide text-crease">Organizer</p>
+          <div className="mt-3 grid gap-2 text-sm text-white/72">
+            <span>{organizer.phone}</span>
+            <span>{organizer.email}</span>
+            <span>{organizer.social}</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

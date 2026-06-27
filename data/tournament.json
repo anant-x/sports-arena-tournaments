@@ -1,0 +1,566 @@
+{
+  "platform": {
+    "name": "Sports Arena Tournaments",
+    "shortName": "Sports Arena",
+    "tagline": "Discover, register, pay, and play local tournaments.",
+    "description": "A multi-sport tournament hosting app for cricket, badminton, tennis, football, and turf events with registrations, advance payments, fixtures, results, and player profiles.",
+    "heroImage": "/assets/tpl-poster.png",
+    "logo": "/assets/sports-arena-logo-v2.png",
+    "supportEmail": "support@sportsarenatournaments.in",
+    "supportPhone": "+91 98765 43210"
+  },
+  "organizer": {
+    "name": "Sports Arena Tournaments Operations",
+    "phone": "+91 98765 43210",
+    "email": "organizers@sportsarenatournaments.in",
+    "address": "Crescent Park Road, Lalkuan, NH024 Ghaziabad",
+    "social": "@sportsarenatournaments"
+  },
+  "tournaments": [
+    {
+      "slug": "tpl-2026",
+      "name": "Turf Premier League 2026",
+      "shortName": "TPL 2026",
+      "sport": "Cricket",
+      "format": "T10",
+      "category": "Team",
+      "tagline": "Night turf cricket. Fast overs. Loud finishes.",
+      "description": "A competitive T10 cricket tournament hosted on turf with compact squads, quick innings, transparent fixtures, and match-day standings for players and fans.",
+      "season": "2026",
+      "dates": "28 June 2026",
+      "startDate": "2026-06-28",
+      "endDate": "2026-06-28",
+      "registrationDeadline": "2026-06-28",
+      "registrationFee": 2400,
+      "advanceAmount": 500,
+      "currency": "INR",
+      "teamSize": "8 players per team",
+      "slots": 16,
+      "registered": 16,
+      "status": "Closed",
+      "featured": true,
+      "venue": "Crescent Park Road near Lord Krishna Swimming Pool, Jindal Public School, Lalkuan, NH024 Ghaziabad",
+      "city": "Ghaziabad",
+      "bannerImage": "/assets/tpl-poster.png",
+      "rules": [
+        "10 overs per side",
+        "8 players per squad",
+        "Tennis ball matches",
+        "Plastic bats allowed",
+        "Turf-friendly footwear only",
+        "One bowler can bowl a maximum of 3 overs"
+      ],
+      "prizes": [
+        "Winning team: trophy, medals, and INR 400 cash prize",
+        "Man of the match: trophy and INR 200",
+        "Fighter of the match: trophy and INR 100"
+      ],
+      "teams": [
+        {
+          "name": "Turf Titans",
+          "shortName": "TT",
+          "logo": "/assets/team-titans.svg",
+          "captain": "Aarav Mehta",
+          "homeColor": "#2f8f5b",
+          "players": ["Aarav Mehta", "Vihaan Batra", "Kabir Saini", "Ishaan Rao", "Rudra Kapoor", "Manav Gill", "Dev Malhotra", "Aditya Nair"]
+        },
+        {
+          "name": "Lalkuan Lions",
+          "shortName": "LL",
+          "logo": "/assets/team-lions.svg",
+          "captain": "Rohan Khanna",
+          "homeColor": "#d97706",
+          "players": ["Rohan Khanna", "Aryan Sharma", "Kunal Verma", "Naman Arora", "Yash Tomar", "Harsh Rana", "Sahil Chauhan", "Tanish Grover"]
+        },
+        {
+          "name": "Ghaziabad Strikers",
+          "shortName": "GS",
+          "logo": "/assets/team-strikers.svg",
+          "captain": "Kartik Bansal",
+          "homeColor": "#2563eb",
+          "players": ["Kartik Bansal", "Arjun Sethi", "Pranav Jain", "Lakshya Malik", "Sameer Dutt", "Uday Saxena", "Raghav Chawla", "Madhav Suri"]
+        },
+        {
+          "name": "Night Hawks",
+          "shortName": "NH",
+          "logo": "/assets/team-hawks.svg",
+          "captain": "Shaurya Singh",
+          "homeColor": "#7c3aed",
+          "players": ["Shaurya Singh", "Vivaan Kohli", "Abhay Tyagi", "Neil Arora", "Reyansh Bedi", "Om Prakash", "Dhruv Ahuja", "Tejas Walia"]
+        },
+        {
+          "name": "Powerplay Panthers",
+          "shortName": "PP",
+          "logo": "/assets/team-panthers.svg",
+          "captain": "Krish Jain",
+          "homeColor": "#dc2626",
+          "players": ["Krish Jain", "Tanmay Garg", "Akshat Vohra", "Virat Narang", "Ansh Bhasin", "Parth Kalra", "Moksh Juneja", "Ritvik Anand"]
+        },
+        {
+          "name": "Boundary Bosses",
+          "shortName": "BB",
+          "logo": "/assets/team-bosses.svg",
+          "captain": "Samar Oberoi",
+          "homeColor": "#0891b2",
+          "players": ["Samar Oberoi", "Ayaan Chopra", "Ivaan Talwar", "Jayant Mathur", "Nivaan Sood", "Akhil Duggal", "Rishit Sehgal", "Daksh Goyal"]
+        },
+        {
+          "name": "Super Over Kings",
+          "shortName": "SOK",
+          "logo": "/assets/team-kings.svg",
+          "captain": "Kabir Arora",
+          "homeColor": "#ca8a04",
+          "players": ["Kabir Arora", "Arnav Mendiratta", "Ojas Tandon", "Hriday Sabharwal", "Atharv Kohli", "Eshan Puri", "Milan Chadha", "Yuvraj Kapoor"]
+        },
+        {
+          "name": "Yorker United",
+          "shortName": "YU",
+          "logo": "/assets/team-united.svg",
+          "captain": "Ishaan Chhabra",
+          "homeColor": "#475569",
+          "players": ["Ishaan Chhabra", "Rayan Mahajan", "Nakul Lamba", "Abeer Sachdeva", "Pratham Dhingra", "Shaan Bhasin", "Avi Gulati", "Ranveer Sethi"]
+        }
+      ],
+      "matches": [
+        {
+          "id": "m1",
+          "team1": "TT",
+          "team2": "LL",
+          "date": "2026-06-28",
+          "time": "6:15 PM",
+          "venue": "Crescent Park Turf - Pitch A",
+          "status": "completed",
+          "result": "Turf Titans won by 18 runs",
+          "scorecard": {
+            "team1Score": "96/4 (10 ov)",
+            "team2Score": "78/6 (10 ov)",
+            "playerOfMatch": "Aarav Mehta",
+            "highlights": ["Aarav Mehta 42 off 21", "Dev Malhotra 2/13", "Turf Titans defended 28 in the final 3 overs"]
+          }
+        },
+        {
+          "id": "m2",
+          "team1": "GS",
+          "team2": "NH",
+          "date": "2026-06-28",
+          "time": "7:00 PM",
+          "venue": "Crescent Park Turf - Pitch B",
+          "status": "completed",
+          "result": "Night Hawks won by 6 wickets",
+          "scorecard": {
+            "team1Score": "82/5 (10 ov)",
+            "team2Score": "86/4 (9.2 ov)",
+            "playerOfMatch": "Shaurya Singh",
+            "highlights": ["Shaurya Singh 37 not out", "Abhay Tyagi 2/16", "Night Hawks chased with 4 balls left"]
+          }
+        },
+        {
+          "id": "m3",
+          "team1": "PP",
+          "team2": "BB",
+          "date": "2026-06-28",
+          "time": "7:45 PM",
+          "venue": "Crescent Park Turf - Pitch A",
+          "status": "upcoming",
+          "result": ""
+        },
+        {
+          "id": "m4",
+          "team1": "SOK",
+          "team2": "YU",
+          "date": "2026-06-28",
+          "time": "8:30 PM",
+          "venue": "Crescent Park Turf - Pitch B",
+          "status": "upcoming",
+          "result": ""
+        },
+        {
+          "id": "m5",
+          "team1": "TT",
+          "team2": "NH",
+          "date": "2026-06-28",
+          "time": "9:20 PM",
+          "venue": "Crescent Park Turf - Pitch A",
+          "status": "upcoming",
+          "result": "Winner advances to Final"
+        },
+        {
+          "id": "m6",
+          "team1": "TBD",
+          "team2": "TBD",
+          "date": "2026-06-28",
+          "time": "10:10 PM",
+          "venue": "Crescent Park Turf - Pitch A",
+          "status": "upcoming",
+          "result": "Final"
+        }
+      ],
+      "standings": [
+        { "team": "TT", "played": 1, "won": 1, "lost": 0, "points": 2, "nrr": "+1.800" },
+        { "team": "NH", "played": 1, "won": 1, "lost": 0, "points": 2, "nrr": "+0.704" },
+        { "team": "GS", "played": 1, "won": 0, "lost": 1, "points": 0, "nrr": "-0.704" },
+        { "team": "LL", "played": 1, "won": 0, "lost": 1, "points": 0, "nrr": "-1.800" },
+        { "team": "PP", "played": 0, "won": 0, "lost": 0, "points": 0, "nrr": "0.000" },
+        { "team": "BB", "played": 0, "won": 0, "lost": 0, "points": 0, "nrr": "0.000" },
+        { "team": "SOK", "played": 0, "won": 0, "lost": 0, "points": 0, "nrr": "0.000" },
+        { "team": "YU", "played": 0, "won": 0, "lost": 0, "points": 0, "nrr": "0.000" }
+      ],
+      "gallery": [
+        {
+          "src": "/assets/tpl-poster.png",
+          "alt": "Turf Premier League 2026 poster artwork",
+          "caption": "Official TPL 2026 poster"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket stadium under lights",
+          "caption": "Evening cricket atmosphere"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket player batting",
+          "caption": "Powerplay intensity"
+        }
+      ]
+    },
+    {
+      "slug": "boundary-battle-2026",
+      "name": "Boundary Battle 2026",
+      "shortName": "Boundary Battle",
+      "sport": "Cricket",
+      "format": "T10 Knockout",
+      "category": "Team",
+      "tagline": "No rivals. No excuses. Just cricket.",
+      "description": "Boundary Battle 2026 is a Turf Premier League knockout cricket event built for all teams. One game, one team, one champion, with limited entries confirmed on a first-come, first-serve basis.",
+      "season": "2026",
+      "dates": "5 July 2026",
+      "startDate": "2026-07-05",
+      "endDate": "2026-07-05",
+      "registrationDeadline": "2026-07-04",
+      "registrationFee": 2800,
+      "advanceAmount": 2800,
+      "currency": "INR",
+      "teamSize": "Team entry with player list and captain contact required",
+      "slots": 16,
+      "registered": 0,
+      "status": "Open",
+      "featured": true,
+      "venue": "Bana Smashers Arena, Sector 4, Wave City (Open Turf)",
+      "city": "Wave City",
+      "bannerImage": "/assets/boundary-battle-2026.png",
+      "ageLimit": "Open to all teams",
+      "refundPolicy": "Entry fee is refundable only if the organizer cancels the tournament. No-shows and withdrawals after fixtures are published are not refundable.",
+      "reportingRule": "Report at Bana Smashers Arena before 6:00 AM with your full squad and captain contact available.",
+      "supportWindow": "Registration support available until 4 July 2026",
+      "participation": "Open to all teams",
+      "registrationNote": "Last date to register: 4 July 2026. Limited entries - first come, first serve. Submit team name, player list, and captain contact.",
+      "social": "@turfpremier_league",
+      "rules": [
+        "Tennis ball used for all matches",
+        "Plastic bats allowed",
+        "Turf-friendly footwear only, no spikes",
+        "A maximum of 1 bowler can bowl up to 3 overs",
+        "T10 knockout format",
+        "Captain must submit team name, player list, and contact details before registration closes"
+      ],
+      "prizes": [
+        "Winner: INR 4500 cash prize, trophy, and medals to all players",
+        "Runner up: recognition award",
+        "Fighter of the Match: medal",
+        "Man of the Tournament: INR 200 and medal"
+      ],
+      "teams": [],
+      "matches": [
+        {
+          "id": "bb1",
+          "team1": "Team 1",
+          "team2": "Team 2",
+          "date": "2026-07-05",
+          "time": "6:00 AM",
+          "venue": "Bana Smashers Arena - Open Turf",
+          "status": "upcoming",
+          "result": "Knockout Round"
+        },
+        {
+          "id": "bb2",
+          "team1": "Winner Match 1",
+          "team2": "Winner Match 2",
+          "date": "2026-07-05",
+          "time": "8:00 AM",
+          "venue": "Bana Smashers Arena - Open Turf",
+          "status": "upcoming",
+          "result": "Semi Final"
+        },
+        {
+          "id": "bb3",
+          "team1": "Finalist A",
+          "team2": "Finalist B",
+          "date": "2026-07-05",
+          "time": "10:00 AM",
+          "venue": "Bana Smashers Arena - Open Turf",
+          "status": "upcoming",
+          "result": "Final"
+        }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "/assets/boundary-battle-2026.png",
+          "alt": "Boundary Battle 2026 Turf Premier League poster",
+          "caption": "Official Boundary Battle 2026 poster"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket batter playing a shot",
+          "caption": "Knockout cricket intensity"
+        },
+        {
+          "src": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket ground under lights",
+          "caption": "Boundary Battle match atmosphere"
+        }
+      ]
+    },
+    {
+      "slug": "smash-court-badminton-open",
+      "name": "Smash Court Badminton Open",
+      "shortName": "SCBO",
+      "sport": "Badminton",
+      "format": "Singles & Doubles",
+      "category": "Individual / Pair",
+      "tagline": "Fast rallies, sharp drops, clean knockouts.",
+      "description": "A weekend badminton tournament with singles and doubles brackets, umpired courts, hydration stations, and trophy rounds for each category.",
+      "season": "2026",
+      "dates": "12 July 2026",
+      "startDate": "2026-07-12",
+      "endDate": "2026-07-12",
+      "registrationDeadline": "2026-07-10",
+      "registrationFee": 1200,
+      "advanceAmount": 300,
+      "currency": "INR",
+      "teamSize": "1 player for singles, 2 players for doubles",
+      "slots": 64,
+      "registered": 38,
+      "status": "Open",
+      "featured": true,
+      "venue": "Smash Court Arena, Raj Nagar Extension, Ghaziabad",
+      "city": "Ghaziabad",
+      "bannerImage": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1400&q=80",
+      "rules": [
+        "15-point games until semifinals",
+        "21-point games for finals",
+        "Yonex Mavis shuttle or equivalent",
+        "Non-marking shoes required",
+        "Players must report 20 minutes before match time"
+      ],
+      "prizes": [
+        "Singles winner: trophy and medals",
+        "Doubles winner: trophy and medals",
+        "Best rally award"
+      ],
+      "teams": [],
+      "matches": [
+        { "id": "b1", "team1": "Court A Q1", "team2": "Court A Q2", "date": "2026-07-12", "time": "9:00 AM", "venue": "Court 1", "status": "upcoming", "result": "Qualifiers" },
+        { "id": "b2", "team1": "Doubles A", "team2": "Doubles B", "date": "2026-07-12", "time": "11:00 AM", "venue": "Court 2", "status": "upcoming", "result": "Doubles Round 1" },
+        { "id": "b3", "team1": "Semi 1", "team2": "Semi 2", "date": "2026-07-12", "time": "5:30 PM", "venue": "Court 1", "status": "upcoming", "result": "Final" }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Badminton shuttle and racket",
+          "caption": "Badminton open registrations"
+        }
+      ]
+    },
+    {
+      "slug": "ghaziabad-tennis-masters",
+      "name": "Ghaziabad Tennis Masters",
+      "shortName": "GTM",
+      "sport": "Tennis",
+      "format": "Best of 3 Sets",
+      "category": "Individual / Pair",
+      "tagline": "Baseline battles and trophy-court finishes.",
+      "description": "A tennis tournament for singles and doubles players with seeded draws, timed warmups, and full match scheduling for clay and hard courts.",
+      "season": "2026",
+      "dates": "19 July 2026",
+      "startDate": "2026-07-19",
+      "endDate": "2026-07-19",
+      "registrationDeadline": "2026-07-16",
+      "registrationFee": 1800,
+      "advanceAmount": 500,
+      "currency": "INR",
+      "teamSize": "1 player for singles, 2 players for doubles",
+      "slots": 48,
+      "registered": 22,
+      "status": "Open",
+      "featured": true,
+      "venue": "Ace Tennis Academy, Indirapuram, Ghaziabad",
+      "city": "Ghaziabad",
+      "bannerImage": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1400&q=80",
+      "rules": [
+        "Best of 3 short sets",
+        "Tie-break at 4-4",
+        "Players bring their own rackets",
+        "Tournament balls provided",
+        "White or court-safe shoes required"
+      ],
+      "prizes": [
+        "Singles champion trophy",
+        "Doubles champion trophy",
+        "Runner-up medals"
+      ],
+      "teams": [],
+      "matches": [
+        { "id": "t1", "team1": "Seed 1", "team2": "Qualifier 4", "date": "2026-07-19", "time": "8:30 AM", "venue": "Court 1", "status": "upcoming", "result": "Round of 16" },
+        { "id": "t2", "team1": "Seed 2", "team2": "Qualifier 7", "date": "2026-07-19", "time": "10:00 AM", "venue": "Court 2", "status": "upcoming", "result": "Round of 16" },
+        { "id": "t3", "team1": "Finalist A", "team2": "Finalist B", "date": "2026-07-19", "time": "6:00 PM", "venue": "Centre Court", "status": "upcoming", "result": "Final" }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Tennis player serving",
+          "caption": "Tennis masters draw"
+        }
+      ]
+    },
+    {
+      "slug": "corporate-turf-cup",
+      "name": "Corporate Turf Cup",
+      "shortName": "CTC",
+      "sport": "Cricket",
+      "format": "T8",
+      "category": "Team",
+      "tagline": "Office rivalries, scoreboard pressure, one trophy.",
+      "description": "A corporate cricket tournament for office teams with short-format games, weekend slots, and a friendly-but-competitive knockout draw.",
+      "season": "2026",
+      "dates": "26 July 2026",
+      "startDate": "2026-07-26",
+      "endDate": "2026-07-26",
+      "registrationDeadline": "2026-07-23",
+      "registrationFee": 3200,
+      "advanceAmount": 800,
+      "currency": "INR",
+      "teamSize": "9 players per company squad",
+      "slots": 12,
+      "registered": 7,
+      "status": "Open",
+      "featured": false,
+      "venue": "Prime Turf, Noida Extension",
+      "city": "Noida Extension",
+      "bannerImage": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1400&q=80",
+      "rules": [
+        "8 overs per side",
+        "One company ID required per player",
+        "Soft tennis ball format",
+        "At least one powerplay over per innings"
+      ],
+      "prizes": ["Winner trophy", "Runner-up medals", "Best office squad award"],
+      "teams": [],
+      "matches": [
+        { "id": "c1", "team1": "Corp A", "team2": "Corp B", "date": "2026-07-26", "time": "5:00 PM", "venue": "Prime Turf", "status": "upcoming", "result": "League Match" },
+        { "id": "c2", "team1": "Corp C", "team2": "Corp D", "date": "2026-07-26", "time": "6:00 PM", "venue": "Prime Turf", "status": "upcoming", "result": "League Match" }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket batter on field",
+          "caption": "Corporate turf cup"
+        }
+      ]
+    },
+    {
+      "slug": "monsoon-football-5s",
+      "name": "Monsoon Football 5s",
+      "shortName": "MF5",
+      "sport": "Football",
+      "format": "5-a-side",
+      "category": "Team",
+      "tagline": "Short halves, fast counters, turf energy.",
+      "description": "A 5-a-side football tournament for local squads with rolling substitutions, compact fixtures, and an evening final under floodlights.",
+      "season": "2026",
+      "dates": "2 August 2026",
+      "startDate": "2026-08-02",
+      "endDate": "2026-08-02",
+      "registrationDeadline": "2026-07-30",
+      "registrationFee": 2800,
+      "advanceAmount": 700,
+      "currency": "INR",
+      "teamSize": "5 starters plus 3 substitutes",
+      "slots": 20,
+      "registered": 13,
+      "status": "Open",
+      "featured": false,
+      "venue": "City Sports Turf, Vaishali, Ghaziabad",
+      "city": "Ghaziabad",
+      "bannerImage": "https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=1400&q=80",
+      "rules": [
+        "Two halves of 8 minutes",
+        "Rolling substitutions allowed",
+        "Studs not allowed on turf",
+        "Direct shootout for knockout draws"
+      ],
+      "prizes": ["Winner trophy", "Golden boot", "Best keeper"],
+      "teams": [],
+      "matches": [
+        { "id": "f1", "team1": "North Block FC", "team2": "Vaishali United", "date": "2026-08-02", "time": "6:00 PM", "venue": "City Sports Turf", "status": "upcoming", "result": "Group A" },
+        { "id": "f2", "team1": "Crossbar Crew", "team2": "Pitch Kings", "date": "2026-08-02", "time": "6:30 PM", "venue": "City Sports Turf", "status": "upcoming", "result": "Group B" }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "https://images.unsplash.com/photo-1551958219-acbc608c6377?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Football on turf",
+          "caption": "Football 5s tournament"
+        }
+      ]
+    },
+    {
+      "slug": "weekend-warriors-t10",
+      "name": "Weekend Warriors T10 League",
+      "shortName": "WWT10",
+      "sport": "Cricket",
+      "format": "T10 League",
+      "category": "Team",
+      "tagline": "A weekend cricket league for regular squads.",
+      "description": "A multi-weekend T10 cricket league with points-table qualification and a final night playoff.",
+      "season": "2026",
+      "dates": "9 August 2026",
+      "startDate": "2026-08-09",
+      "endDate": "2026-08-23",
+      "registrationDeadline": "2026-08-05",
+      "registrationFee": 3600,
+      "advanceAmount": 900,
+      "currency": "INR",
+      "teamSize": "8 players per squad",
+      "slots": 10,
+      "registered": 5,
+      "status": "Open",
+      "featured": false,
+      "venue": "Crescent Park Turf, Ghaziabad",
+      "city": "Ghaziabad",
+      "bannerImage": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1400&q=80",
+      "rules": [
+        "10 overs per side",
+        "League stage plus playoffs",
+        "Points: win 2, no-result 1",
+        "NRR decides tied teams"
+      ],
+      "prizes": ["League trophy", "Orange cap", "Purple cap"],
+      "teams": [],
+      "matches": [
+        { "id": "w1", "team1": "Weekend XI", "team2": "Sunday Smashers", "date": "2026-08-09", "time": "7:00 PM", "venue": "Crescent Park Turf", "status": "upcoming", "result": "League Match" }
+      ],
+      "standings": [],
+      "gallery": [
+        {
+          "src": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=1200&q=80",
+          "alt": "Cricket stadium lights",
+          "caption": "Weekend T10 league"
+        }
+      ]
+    }
+  ]
+}

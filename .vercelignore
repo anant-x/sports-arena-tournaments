@@ -1,0 +1,15 @@
+.env
+.env.*
+.next/
+out/
+out*/
+out-stuck-*/
+*.db
+*.db-*
+data/*.db
+data/*.db-*
+database.js
+server.js
+routes/
+node_modules/
+npm-debug.log*

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Yorker United logo">
+  <rect width="160" height="160" rx="18" fill="#1f2937"/>
+  <circle cx="80" cy="80" r="58" fill="#475569"/>
+  <path d="M48 42h64v70c0 16-13 28-32 28s-32-12-32-28V42Z" fill="#f7f4ec"/>
+  <path d="M58 70h44M58 90h44M80 42v76" stroke="#1f2937" stroke-width="9" stroke-linecap="round"/>
+  <text x="80" y="132" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="900" fill="#1f2937">YU</text>
+</svg>

@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+.next/
+out/
+out*/
+out-stuck-*/
+.vercel/
+.node_modules_failed_*/
+.env
+.env.*
+tournament.db
+tournament-copy.db
+data/*.db
+data/*.db-*
+npm-debug.log*
+.vercel

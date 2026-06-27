@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Turf Titans logo">
+  <rect width="160" height="160" rx="18" fill="#0d2117"/>
+  <circle cx="80" cy="80" r="58" fill="#2f8f5b"/>
+  <path d="M40 56h80l-16 58H56L40 56Z" fill="#f7f4ec"/>
+  <path d="M80 30l10 22h24L95 67l8 24-23-14-23 14 8-24-19-15h24L80 30Z" fill="#f6b73c"/>
+  <text x="80" y="122" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#0d2117">TT</text>
+</svg>
