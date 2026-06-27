@@ -51,39 +51,35 @@ export default function AuthForm({ mode = "login" }) {
       const data = await response.json();
 
       if (response.ok && data.user) {
+        if (!data.databaseConfigured) {
+          setMessage("Database is not connected yet. Account login needs the production database.");
+          return;
+        }
+
         saveUser({
           ...data.user,
           savedAt: new Date().toISOString()
         });
+        window.dispatchEvent(new Event("tth:auth-updated"));
         setMessage(
-          data.databaseConfigured
-            ? mode === "signup"
-              ? "Account saved in the database. Your profile is ready for registrations."
-              : "Logged in. Your database profile is active."
-            : "Database is not connected yet, so your details are saved locally for now."
+          mode === "signup"
+            ? "Account created. Opening your profile..."
+            : "Logged in. Opening your profile..."
         );
+        window.setTimeout(() => {
+          window.location.href = "/profile";
+        }, 700);
         return;
       }
 
-      if (mode === "login" && data.databaseConfigured === false) {
-        saveUser({
-          email: form.email,
-          name: form.email.split("@")[0],
-          savedAt: new Date().toISOString()
-        });
-        setMessage("Database is not connected yet, so this browser profile is active locally.");
+      if (data.databaseConfigured === false) {
+        setMessage("Database is not connected yet. Account login needs the production database.");
         return;
       }
 
       setMessage(data.error || "Could not save account details.");
     } catch {
-      const { password, ...localUser } = form;
-      setMessage("Could not reach the account service. Your details are still saved locally on this device.");
-      saveUser({
-        ...localUser,
-        name: form.name || form.email.split("@")[0],
-        savedAt: new Date().toISOString()
-      });
+      setMessage("Could not reach the account service. Please try again in a moment.");
     } finally {
       setBusy(false);
     }
@@ -144,7 +140,7 @@ export default function AuthForm({ mode = "login" }) {
         <Link href="/privacy" className="font-black text-turf">Privacy</Link>
       </div>
       <p className="mt-4 rounded-md bg-floodlight px-4 py-3 text-xs font-semibold leading-5 text-graphite/70">
-        Your account details are used for tournament registration, payment verification, score updates, and organizer communication.
+        Your account is stored in the tournament database and kept active with a secure session cookie for registrations, payment verification, score updates, and organizer communication.
       </p>
     </div>
   );

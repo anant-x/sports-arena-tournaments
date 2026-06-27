@@ -15,9 +15,11 @@ export function readUser() {
   }
 }
 
-export function saveUser(user) {
+export function saveUser(user, { notify = true } = {}) {
   window.localStorage.setItem(USER_KEY, JSON.stringify(user));
-  window.dispatchEvent(new Event("tth:user-updated"));
+  if (notify) {
+    window.dispatchEvent(new Event("tth:user-updated"));
+  }
 }
 
 export function clearUser() {

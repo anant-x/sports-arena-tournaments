@@ -9,32 +9,55 @@ export default function ProfilePanel({ tournaments }) {
   const [registrations, setRegistrations] = useState([]);
   const [editing, setEditing] = useState(false);
   const [message, setMessage] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const refresh = async () => {
-      const savedUser = readUser();
-      setUser(savedUser);
+      setLoading(true);
+      let activeUser = null;
+
+      try {
+        const profileResponse = await fetch("/api/profile", { cache: "no-store" });
+        const profileData = await profileResponse.json();
+
+        if (profileResponse.ok && profileData.user) {
+          activeUser = profileData.user;
+          setAuthenticated(true);
+          saveUser({ ...profileData.user, savedAt: new Date().toISOString() }, { notify: false });
+        } else {
+          activeUser = readUser();
+          setAuthenticated(false);
+        }
+      } catch {
+        activeUser = readUser();
+        setAuthenticated(false);
+      }
+
+      setUser(activeUser);
       setRegistrations(readRegistrations());
 
-      if (savedUser?.email) {
+      if (activeUser?.email) {
         try {
-          const response = await fetch(`/api/registrations?email=${encodeURIComponent(savedUser.email)}`);
+          const response = await fetch(`/api/registrations?email=${encodeURIComponent(activeUser.email)}`, { cache: "no-store" });
           const data = await response.json();
-          if (response.ok && data.registrations?.length) {
-            setRegistrations(data.registrations);
-          }
+          setRegistrations(response.ok && data.registrations?.length ? data.registrations : readRegistrations());
         } catch {
           setRegistrations(readRegistrations());
         }
       }
+
+      setLoading(false);
     };
 
     refresh();
     window.addEventListener("tth:user-updated", refresh);
     window.addEventListener("tth:registrations-updated", refresh);
+    window.addEventListener("tth:auth-updated", refresh);
     return () => {
       window.removeEventListener("tth:user-updated", refresh);
       window.removeEventListener("tth:registrations-updated", refresh);
+      window.removeEventListener("tth:auth-updated", refresh);
     };
   }, []);
 
@@ -44,7 +67,13 @@ export default function ProfilePanel({ tournaments }) {
 
   async function saveProfile(event) {
     event.preventDefault();
-    saveUser({ ...user, savedAt: new Date().toISOString() });
+    saveUser({ ...user, savedAt: new Date().toISOString() }, { notify: false });
+
+    if (!authenticated) {
+      setMessage("Browser copy saved. Login to sync profile edits with the tournament database.");
+      setEditing(false);
+      return;
+    }
 
     try {
       const response = await fetch("/api/profile", {
@@ -66,16 +95,37 @@ export default function ProfilePanel({ tournaments }) {
     setEditing(false);
   }
 
+  async function logout() {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" });
+    } finally {
+      clearUser();
+      setUser(null);
+      setAuthenticated(false);
+      setRegistrations([]);
+      window.dispatchEvent(new Event("tth:auth-updated"));
+    }
+  }
+
   const tournamentBySlug = Object.fromEntries(tournaments.map((tournament) => [tournament.slug, tournament]));
+
+  if (loading) {
+    return <div className="rounded-lg bg-white p-6 font-black text-pitch shadow-sm">Loading your profile...</div>;
+  }
 
   if (!user) {
     return (
       <div className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
-        <p className="text-xl font-black text-pitch">No saved profile yet</p>
-        <p className="mt-2 text-sm leading-6 text-graphite/68">Create an account to keep your details ready for future tournament registrations on this browser.</p>
-        <Link href="/signup" className="tap-target mt-5 inline-flex w-full items-center justify-center rounded-md bg-pitch px-5 py-3 text-sm font-black text-white sm:w-auto">
-          Create Account
-        </Link>
+        <p className="text-xl font-black text-pitch">Login required</p>
+        <p className="mt-2 text-sm leading-6 text-graphite/68">Login or create an account to view your database profile, registrations, and payment status.</p>
+        <div className="mt-5 grid gap-3 sm:flex sm:flex-wrap">
+          <Link href="/login" className="tap-target flex items-center justify-center rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">
+            Login
+          </Link>
+          <Link href="/signup" className="tap-target flex items-center justify-center rounded-md border border-graphite/15 px-5 py-3 text-sm font-black text-pitch">
+            Create Account
+          </Link>
+        </div>
       </div>
     );
   }
@@ -85,7 +135,7 @@ export default function ProfilePanel({ tournaments }) {
       <section className="motion-card rounded-lg border border-graphite/10 bg-white p-4 shadow-sm sm:p-6">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
-            <p className="text-sm font-black uppercase text-turf">Saved Profile</p>
+            <p className="text-sm font-black uppercase text-turf">{authenticated ? "Database Profile" : "Browser Profile"}</p>
             <h2 className="mt-1 break-words text-2xl font-black text-pitch sm:text-3xl">{user.name}</h2>
           </div>
           <button onClick={() => setEditing((value) => !value)} className="tap-target shrink-0 rounded-md border border-graphite/15 px-4 py-2 text-sm font-black text-pitch">
@@ -98,7 +148,13 @@ export default function ProfilePanel({ tournaments }) {
             {["name", "email", "phone", "city", "primarySport"].map((field) => (
               <label key={field} className="grid gap-2 text-sm font-bold capitalize text-pitch">
                 {field === "primarySport" ? "Primary Sport" : field}
-                <input name={field} value={user[field] ?? ""} onChange={updateField} className="rounded-md border border-graphite/15 px-4 py-3 font-semibold outline-none focus:border-turf" />
+                <input
+                  name={field}
+                  value={user[field] ?? ""}
+                  onChange={updateField}
+                  readOnly={authenticated && field === "email"}
+                  className="rounded-md border border-graphite/15 px-4 py-3 font-semibold outline-none focus:border-turf read-only:bg-floodlight read-only:text-graphite/60"
+                />
               </label>
             ))}
             <button className="tap-target rounded-md bg-pitch px-5 py-3 text-sm font-black text-white">Save Details</button>
@@ -120,15 +176,17 @@ export default function ProfilePanel({ tournaments }) {
         )}
         {message ? <p className="mt-4 rounded-md bg-floodlight px-4 py-3 text-sm font-black text-pitch">{message}</p> : null}
 
-        <button
-          onClick={() => {
-            clearUser();
-            setUser(null);
-          }}
-          className="mt-5 text-sm font-black text-red-700"
-        >
-          Clear saved profile
-        </button>
+        <div className="mt-5 flex flex-wrap gap-4">
+          {authenticated ? (
+            <button onClick={logout} className="text-sm font-black text-red-700">
+              Logout
+            </button>
+          ) : (
+            <Link href="/login" className="text-sm font-black text-turf">
+              Login to sync this profile
+            </Link>
+          )}
+        </div>
       </section>
 
       <section>

@@ -2,7 +2,15 @@
 
 import { useEffect, useState } from "react";
 
-function ScoreLine({ match }) {
+function resolveTeam(label, event) {
+  return event?.teams?.find((team) => team.shortName === label || team.name === label);
+}
+
+function displayName(label, event) {
+  return resolveTeam(label, event)?.name || label;
+}
+
+function ScoreLine({ match, event }) {
   const scorecard = match.scorecard || {};
 
   return (
@@ -10,7 +18,7 @@ function ScoreLine({ match }) {
       <div className="flex items-start justify-between gap-3">
         <div className="min-w-0">
           <p className="text-xs font-black uppercase text-turf">{match.date} · {match.time}</p>
-          <h3 className="mt-1 text-lg font-black leading-tight text-pitch sm:text-xl">{match.team1} vs {match.team2}</h3>
+          <h3 className="mt-1 text-lg font-black leading-tight text-pitch sm:text-xl">{displayName(match.team1, event)} vs {displayName(match.team2, event)}</h3>
           <p className="mt-1 text-sm font-semibold text-graphite/62">{match.venue}</p>
         </div>
         <span className={`shrink-0 rounded-md px-3 py-1 text-xs font-black uppercase ${match.status === "live" ? "pulse-live bg-red-600 text-white" : match.status === "completed" ? "bg-scoreboard text-white" : "bg-crease text-pitch"}`}>
@@ -19,11 +27,11 @@ function ScoreLine({ match }) {
       </div>
       <div className="mt-4 grid gap-3 sm:grid-cols-2">
         <div className="score-pop rounded-md bg-floodlight p-4">
-          <p className="text-sm font-bold text-graphite/60">{match.team1}</p>
+          <p className="text-sm font-bold text-graphite/60">{displayName(match.team1, event)}</p>
           <p className="mt-1 text-2xl font-black text-pitch">{scorecard.team1Score || "Pending"}</p>
         </div>
         <div className="score-pop rounded-md bg-floodlight p-4">
-          <p className="text-sm font-bold text-graphite/60">{match.team2}</p>
+          <p className="text-sm font-bold text-graphite/60">{displayName(match.team2, event)}</p>
           <p className="mt-1 text-2xl font-black text-pitch">{scorecard.team2Score || "Pending"}</p>
         </div>
       </div>
@@ -33,30 +41,50 @@ function ScoreLine({ match }) {
   );
 }
 
-export default function LiveScoreboard() {
-  const [scoreboard, setScoreboard] = useState([]);
-  const [message, setMessage] = useState("Loading live scoreboard...");
+export default function LiveScoreboard({ initialScoreboard = [] }) {
+  const [scoreboard, setScoreboard] = useState(initialScoreboard);
+  const [message, setMessage] = useState(initialScoreboard.length ? "" : "Loading live scoreboard...");
+  const [refreshMessage, setRefreshMessage] = useState("");
 
   useEffect(() => {
+    let mounted = true;
+
     async function load() {
       try {
         const response = await fetch("/api/scoreboard", { cache: "no-store" });
         const data = await response.json();
-        if (!response.ok) {
-          setMessage(data.error || "Could not load scoreboard.");
+        if (!mounted) {
           return;
         }
-        setScoreboard(data.scoreboard || []);
-        setMessage("");
+        if (!response.ok) {
+          if (!scoreboard.length) {
+            setMessage(data.error || "Could not load scoreboard.");
+          }
+          setRefreshMessage("Showing saved schedule while live updates reconnect.");
+          return;
+        }
+        const nextScoreboard = data.scoreboard?.length ? data.scoreboard : initialScoreboard;
+        setScoreboard(nextScoreboard);
+        setMessage(nextScoreboard.length ? "" : "No live scoreboard data is available yet.");
+        setRefreshMessage("");
       } catch {
-        setMessage("Could not load scoreboard.");
+        if (!mounted) {
+          return;
+        }
+        if (!scoreboard.length) {
+          setMessage("Could not load scoreboard.");
+        }
+        setRefreshMessage("Showing saved schedule while live updates reconnect.");
       }
     }
 
     load();
     const timer = window.setInterval(load, 30000);
-    return () => window.clearInterval(timer);
-  }, []);
+    return () => {
+      mounted = false;
+      window.clearInterval(timer);
+    };
+  }, [initialScoreboard, scoreboard.length]);
 
   if (message) {
     return <div className="rounded-lg bg-white p-6 font-black text-pitch shadow-sm">{message}</div>;
@@ -64,6 +92,7 @@ export default function LiveScoreboard() {
 
   return (
     <div className="grid gap-10">
+      {refreshMessage ? <p className="rounded-lg bg-crease/20 px-4 py-3 text-sm font-black text-pitch">{refreshMessage}</p> : null}
       {scoreboard.map((event) => (
         <section key={event.tournamentSlug}>
           <div className="flex flex-col gap-1 sm:flex-row sm:items-end sm:justify-between">
@@ -75,7 +104,7 @@ export default function LiveScoreboard() {
           </div>
           <div className="stagger-list mt-4 grid gap-4 lg:grid-cols-2">
             {event.matches.map((match) => (
-              <ScoreLine key={`${event.tournamentSlug}-${match.id}`} match={match} />
+              <ScoreLine key={`${event.tournamentSlug}-${match.id}`} match={match} event={event} />
             ))}
           </div>
           {event.standings.length ? (

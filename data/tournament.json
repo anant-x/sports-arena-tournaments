@@ -188,8 +188,8 @@
         },
         {
           "id": "m6",
-          "team1": "TBD",
-          "team2": "TBD",
+          "team1": "Winner Semi Final 1",
+          "team2": "Winner Semi Final 2",
           "date": "2026-06-28",
           "time": "10:10 PM",
           "venue": "Crescent Park Turf - Pitch A",
@@ -275,30 +275,30 @@
       "matches": [
         {
           "id": "bb1",
-          "team1": "Team 1",
-          "team2": "Team 2",
+          "team1": "Seed 1",
+          "team2": "Seed 4",
           "date": "2026-07-05",
           "time": "6:00 AM",
           "venue": "Bana Smashers Arena - Open Turf",
           "status": "upcoming",
-          "result": "Knockout Round"
+          "result": "Qualifier 1"
         },
         {
           "id": "bb2",
-          "team1": "Winner Match 1",
-          "team2": "Winner Match 2",
+          "team1": "Seed 2",
+          "team2": "Seed 3",
           "date": "2026-07-05",
-          "time": "8:00 AM",
+          "time": "7:15 AM",
           "venue": "Bana Smashers Arena - Open Turf",
           "status": "upcoming",
-          "result": "Semi Final"
+          "result": "Qualifier 2"
         },
         {
           "id": "bb3",
-          "team1": "Finalist A",
-          "team2": "Finalist B",
+          "team1": "Winner Q1",
+          "team2": "Winner Q2",
           "date": "2026-07-05",
-          "time": "10:00 AM",
+          "time": "8:45 AM",
           "venue": "Bana Smashers Arena - Open Turf",
           "status": "upcoming",
           "result": "Final"
@@ -362,9 +362,9 @@
       ],
       "teams": [],
       "matches": [
-        { "id": "b1", "team1": "Court A Q1", "team2": "Court A Q2", "date": "2026-07-12", "time": "9:00 AM", "venue": "Court 1", "status": "upcoming", "result": "Qualifiers" },
-        { "id": "b2", "team1": "Doubles A", "team2": "Doubles B", "date": "2026-07-12", "time": "11:00 AM", "venue": "Court 2", "status": "upcoming", "result": "Doubles Round 1" },
-        { "id": "b3", "team1": "Semi 1", "team2": "Semi 2", "date": "2026-07-12", "time": "5:30 PM", "venue": "Court 1", "status": "upcoming", "result": "Final" }
+        { "id": "b1", "team1": "Singles Seed 1", "team2": "Singles Seed 8", "date": "2026-07-12", "time": "9:00 AM", "venue": "Court 1", "status": "upcoming", "result": "Singles Qualifier" },
+        { "id": "b2", "team1": "Doubles Seed 1", "team2": "Doubles Seed 4", "date": "2026-07-12", "time": "11:00 AM", "venue": "Court 2", "status": "upcoming", "result": "Doubles Round 1" },
+        { "id": "b3", "team1": "Singles Finalist 1", "team2": "Singles Finalist 2", "date": "2026-07-12", "time": "5:30 PM", "venue": "Court 1", "status": "upcoming", "result": "Singles Final" }
       ],
       "standings": [],
       "gallery": [
@@ -416,7 +416,7 @@
       "matches": [
         { "id": "t1", "team1": "Seed 1", "team2": "Qualifier 4", "date": "2026-07-19", "time": "8:30 AM", "venue": "Court 1", "status": "upcoming", "result": "Round of 16" },
         { "id": "t2", "team1": "Seed 2", "team2": "Qualifier 7", "date": "2026-07-19", "time": "10:00 AM", "venue": "Court 2", "status": "upcoming", "result": "Round of 16" },
-        { "id": "t3", "team1": "Finalist A", "team2": "Finalist B", "date": "2026-07-19", "time": "6:00 PM", "venue": "Centre Court", "status": "upcoming", "result": "Final" }
+        { "id": "t3", "team1": "Winner Semi Final 1", "team2": "Winner Semi Final 2", "date": "2026-07-19", "time": "6:00 PM", "venue": "Centre Court", "status": "upcoming", "result": "Final" }
       ],
       "standings": [],
       "gallery": [

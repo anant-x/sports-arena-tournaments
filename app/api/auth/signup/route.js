@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { hasDatabase } from "../../../../lib/db";
-import { upsertUser } from "../../../../lib/platformRepository";
+import { createUserSession, upsertUser } from "../../../../lib/platformRepository";
+import { sessionCookieOptions, SESSION_COOKIE } from "../../../../lib/session";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,10 +29,17 @@ export async function POST(request) {
       { setPassword: true }
     );
 
-    return NextResponse.json({
+    const response = NextResponse.json({
       databaseConfigured: hasDatabase(),
       user
     });
+
+    const token = await createUserSession(user.id);
+    if (token) {
+      response.cookies.set(SESSION_COOKIE, token, sessionCookieOptions());
+    }
+
+    return response;
   } catch (error) {
     return NextResponse.json({ error: error.message || "Could not create account." }, { status: 500 });
   }

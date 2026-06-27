@@ -10,15 +10,24 @@ function displayName(shortName, tournament) {
   return team?.name || (tournament ? shortName : teamName(shortName));
 }
 
+function slotBadge(shortName) {
+  const words = String(shortName || "Slot").match(/[A-Za-z0-9]+/g) || ["Slot"];
+  return words
+    .slice(0, 2)
+    .map((word) => word[0])
+    .join("")
+    .toUpperCase();
+}
+
 function TeamLine({ shortName, tournament }) {
   const team = resolveTeam(shortName, tournament);
 
   return (
     <div className="flex min-w-0 items-center gap-3">
-      {team ? <TeamBadge team={team} size="sm" /> : <span className="grid h-10 w-10 place-items-center rounded-md bg-slate-200 text-xs font-black">TBD</span>}
+      {team ? <TeamBadge team={team} size="sm" /> : <span className="grid h-10 w-10 shrink-0 place-items-center rounded-md bg-crease/35 text-xs font-black text-pitch">{slotBadge(shortName)}</span>}
       <div className="min-w-0">
         <p className="truncate text-sm font-black text-pitch">{displayName(shortName, tournament)}</p>
-        <p className="text-xs font-bold uppercase text-graphite/48">{shortName}</p>
+        <p className="text-xs font-bold uppercase text-graphite/48">{team ? shortName : "Bracket slot"}</p>
       </div>
     </div>
   );

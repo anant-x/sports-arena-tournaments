@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AccountNav from "./client/AccountNav";
 import { platform } from "../lib/tournament";
 
 const navItems = [
@@ -35,12 +36,7 @@ export default function SiteHeader() {
               <span className="block truncate text-[11px] font-bold uppercase tracking-wide text-crease sm:text-xs">Play · Compete · Win</span>
             </span>
           </Link>
-          <Link
-            href="/login"
-            className="shine-button tap-target inline-flex items-center rounded-md bg-crease px-3 py-2 text-sm font-bold text-pitch shadow-sm transition hover:bg-white sm:px-4"
-          >
-            Login
-          </Link>
+          <AccountNav />
         </div>
         <nav aria-label="Primary navigation" className="mobile-scroll -mx-3 flex snap-x gap-1 overflow-x-auto px-3 pb-1 text-sm font-semibold text-white/78 sm:-mx-1 sm:px-1">
           {navItems.map((item) => (
