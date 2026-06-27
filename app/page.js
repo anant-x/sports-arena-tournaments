@@ -103,8 +103,8 @@ export default function HomePage() {
       </section>
 
       <section className="bg-floodlight px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div>
+        <div className="mx-auto grid w-full max-w-7xl min-w-0 gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="min-w-0">
             <SectionHeader
               eyebrow="TPL 2026"
               title="Featured cricket tournament"
@@ -120,7 +120,7 @@ export default function HomePage() {
               ))}
             </div>
           </div>
-          <div>
+          <div className="min-w-0">
             <SectionHeader eyebrow="Standings" title="TPL points table" />
             <div className="mt-6">
               <PointsTable limit={5} />
