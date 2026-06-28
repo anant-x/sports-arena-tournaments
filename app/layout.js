@@ -2,6 +2,7 @@ import "./globals.css";
 import SiteFooter from "../components/SiteFooter";
 import SiteHeader from "../components/SiteHeader";
 import ScrollReveal from "../components/client/ScrollReveal";
+import TournamentChatbot from "../components/client/TournamentChatbot";
 import { platform } from "../lib/tournament";
 
 export const metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
         <SiteHeader />
         {children}
         <SiteFooter />
+        <TournamentChatbot />
       </body>
     </html>
   );
