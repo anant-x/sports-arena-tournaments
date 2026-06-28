@@ -1,16 +1,19 @@
 import Scorecard from "../../components/Scorecard";
 import SectionHeader from "../../components/SectionHeader";
-import { tournaments } from "../../lib/tournament";
+import { listScoreboard } from "../../lib/platformRepository";
 
 export const metadata = {
   title: "Match Results"
 };
 
-export default function ResultsPage() {
-  const results = tournaments.flatMap((tournament) =>
+export const dynamic = "force-dynamic";
+
+export default async function ResultsPage() {
+  const scoreboard = await listScoreboard();
+  const results = scoreboard.flatMap((tournament) =>
     (tournament.matches || [])
       .filter((match) => match.status === "completed")
-      .map((match) => ({ match, tournament }))
+      .map((match) => ({ match, tournament: { ...tournament, slug: tournament.tournamentSlug, name: tournament.tournamentName } }))
   );
 
   return (

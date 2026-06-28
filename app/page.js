@@ -3,6 +3,7 @@ import Link from "next/link";
 import PointsTable from "../components/PointsTable";
 import SectionHeader from "../components/SectionHeader";
 import TournamentCard from "../components/TournamentCard";
+import ManagedAnnouncement from "../components/client/ManagedAnnouncement";
 import { contactInfo, testimonials, trustStats, whatsappUrl } from "../lib/siteInfo";
 import { featuredTournaments, openTournaments, platform, primaryTournament, sportsList, upcomingMatches } from "../lib/tournament";
 
@@ -70,6 +71,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ManagedAnnouncement />
 
       <section className="bg-white px-4 py-10 sm:px-6 lg:px-8">
         <div className="stagger-list mx-auto grid max-w-7xl gap-4 sm:grid-cols-2 lg:grid-cols-4">

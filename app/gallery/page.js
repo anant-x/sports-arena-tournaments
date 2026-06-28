@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SectionHeader from "../../components/SectionHeader";
+import ManagedGalleryAdditions from "../../components/client/ManagedGalleryAdditions";
 import { allGalleryImages } from "../../lib/tournament";
 
 export const metadata = {
@@ -29,6 +30,7 @@ export default function GalleryPage() {
               </figcaption>
             </figure>
           ))}
+          <ManagedGalleryAdditions />
         </div>
       </div>
     </main>

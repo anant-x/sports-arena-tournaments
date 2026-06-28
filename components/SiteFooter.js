@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import ManagedFooterContact from "./client/ManagedFooterContact";
 import { contactInfo } from "../lib/siteInfo";
 import { platform, tournaments } from "../lib/tournament";
 
@@ -37,17 +38,7 @@ export default function SiteFooter() {
         </div>
         <div>
           <p className="text-sm font-bold uppercase tracking-wide text-crease">Organizer</p>
-          <div className="mt-3 grid gap-2 text-sm text-white/72">
-            <a href={`tel:${contact.phone}`} className="transition hover:text-crease">{contact.phone}</a>
-            <a href={`mailto:${contact.email}`} className="transition hover:text-crease">{contact.email}</a>
-            {contact.instagramUrl ? (
-              <a href={contact.instagramUrl} target="_blank" rel="noreferrer" className="transition hover:text-crease">
-                {contact.social}
-              </a>
-            ) : (
-              <span>{contact.social}</span>
-            )}
-          </div>
+          <ManagedFooterContact fallback={contact} />
         </div>
       </div>
     </footer>

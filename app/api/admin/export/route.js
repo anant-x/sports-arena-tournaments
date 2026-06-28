@@ -20,6 +20,10 @@ const tableColumns = {
     "advanceAmount",
     "currency",
     "status",
+    "approvalStatus",
+    "paymentStatus",
+    "paidAmount",
+    "paidAt",
     "createdAt"
   ],
   users: ["id", "name", "email", "phone", "city", "primarySport", "createdAt"],
